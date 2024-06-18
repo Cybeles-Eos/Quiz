@@ -5,7 +5,7 @@
    padding: 0;
    box-sizing: border-box;
    font-family: "Poppins", sans-serif;
-
+   user-select: none;
 }
 
 :root{
@@ -17,7 +17,7 @@
    --lner-drk-Blue: #041733;
 
    --White: #FFFFFF;
-   --Gray: #c2c2c2;
+   --Gray: #dddddd;
    --DGray: rgb(158, 157, 157);
 
    --Spicy: "Spicy Rice", serif;
@@ -28,8 +28,8 @@ body{
    position: relative;
    background: radial-gradient(
       circle,
-      var(--lner-ny-Blue) 0%,
-      var(--lner-drk-Blue) 100%
+      rgb(255, 245, 247) 0%,
+      rgb(255, 209, 209) 100%
    );
    padding-inline: 1rem;
 }
@@ -37,12 +37,51 @@ body{
 article{
    max-width: 530px;
    margin: 50px auto;
+   margin-top: 9rem;
    background-color: var(--light-back);
    border-radius: 20px;
    border: 7px solid var(--Gray);
    padding: 1rem 1.1rem;
-   
+   position: relative;
+   z-index: 100;
+}  
+
+#cat-home{
+   position: absolute;
+   top: -7.5rem;
+   width: 8rem;
+   left: 0;
+   right: 0;
+   margin-inline: auto;
+   display: none;
 }
+
+
+.startQuiz{
+   width: 100%;
+   height: 10rem;
+   position: relative;
+   z-index: 200;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.startQ{
+   padding: 10px 3rem;
+   font-family: var(--Spicy);
+   color: var(--light-back);
+   border: none;
+   background-color: rgb(250, 193, 193);
+   font-size: 2rem;
+   letter-spacing: 1px;
+   border-radius: 10px;
+   transition: 150ms;
+}
+.startQ:active{
+   scale: 1.1;
+}
+
+
 
 .endBox{
    width: 100%;
@@ -50,12 +89,29 @@ article{
    display: none;
    flex-direction: column;
    align-items: center;
+   position: relative;
+   padding-bottom: 5rem;
+}
+#goodluck-cat{
+   position: absolute;
+   bottom: 0;
+   width: 11rem;
 }
 #score-title{
    font-size: 3.5rem;
    font-family: var(--LilitaOne);
    color: var(--Drk-Gray);
-   margin-top: 2rem;
+   margin-top: 1.6rem;
+}
+#comments{
+   margin-top: -.3rem;
+   letter-spacing: .4px;
+   font-size: 14px;
+   font-weight: 500;
+}
+del{
+   text-decoration-color: red;
+   text-decoration-line: line-through;
 }
 .ov-scr{
    display: flex;
@@ -88,7 +144,9 @@ article{
 
 
 
-
+.main-quiz-holder{
+   display: none;
+}
 #questions-holder{
    transition: .3s;
 }
@@ -133,15 +191,15 @@ h1{
    padding: 6px 0;
    margin-top: 1rem;
    border: none;
-   background-color: var(--lner-ny-Blue);
+   background-color: rgb(250, 193, 193);
    color: var(--light-back);
    font-size: 15px;
    letter-spacing: 1px;
    border-radius: 4px;
    cursor: pointer;
+   transition: 150ms;
 }
-
-
-
-
+.next:active{
+   scale: 1.1;
+}
 
