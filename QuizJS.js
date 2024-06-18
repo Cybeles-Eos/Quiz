@@ -24,7 +24,7 @@ const questions = [
 let userScore = 0;
 let questionIndex = 0;
 let randomQuestion = Math.floor(Math.random() * questions.length);
-
+const effectMove = document.getElementById("soundEffect");
 
 
 let nextQuest = document.querySelector('.next');
@@ -34,6 +34,11 @@ const mScore = document.getElementById("userScore");
 const outOfScore = document.getElementById("outOf");
 
 nextQuest.style.display = "none";
+
+function playE(){
+  effectMove.play();
+  effectMove.audio = 0.7;
+}
 
 function quizStart(){
   let {question} = questions[questionIndex];
@@ -57,7 +62,7 @@ nextQuest.addEventListener('click', ()=>{
   let [pickTrue, pickFalse] = document.querySelectorAll('.btn');
   let userSelected = "";
 
-
+  playE();
   userSelected = (pickFalse.classList.contains("userPick")) ? "false" : "true";
   (userSelected == answer)? userScore++ : null;
     
