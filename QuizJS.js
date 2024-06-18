@@ -18,6 +18,66 @@ const questions = [
    {
      question: "In a partnership, each partner's liability is limited to the amount they invested in the business.",
      answer: "false"
+   },
+   {
+    question: "The balance sheet is a financial statement that shows a company's revenues and expenses over a specific period.",
+    answer: "false"
+   },
+   {
+    question: "Market segmentation involves dividing a broad target market into subsets of consumers with common needs or characteristics.",
+    answer: "true" 
+   },
+   {
+    question: "In a SWOT analysis, 'W' stands for Weaknesses.",
+    answer: "true"
+   },
+   {
+    question: "The Four Ps of marketing are Product, Price, Place, and Profit.",
+    answer: "false"
+   },
+   {
+    question: "A limited liability company (LLC) combines the taxation benefits of a partnership with the liability protection of a corporation.",
+    answer: "true"
+   },
+   {
+    question: "In cost accounting, fixed costs change with the level of production output.",
+    answer: "false"
+   },
+   {
+    question: "A company's mission statement defines its long-term goals and strategic direction",
+    answer: "true"
+   },
+   {
+    question: "Cash flow from investing activities includes the cash transactions for the purchase and sale of assets.",
+    answer: "true"
+   },
+   {
+    question: "The Just-In-Time (JIT) inventory system aims to minimize holding costs by receiving goods only as they are needed in the production process.",
+    answer: "true"
+   },
+   {
+    question: "In business ethics, utilitarianism focuses on the actions that are morally right because they benefit the greatest number of people.",
+    answer: "true"
+   },
+   {
+    question: "Strategic planning typically focuses on a short-term timeframe of one year or less.",
+    answer: "false"
+   },
+   {
+    question: "In finance, the time value of money principle suggests that money available now is worth less than the same amount in the future due to potential earning capacity.",
+    answer: "false"
+   },
+   {
+    question: "The current ratio is a liquidity ratio that measures a company's ability to pay short-term obligations.",
+    answer: "true"
+   },
+   {
+    question: "A merger occurs when two companies combine to form a new entity, while an acquisition involves one company taking over another.",
+    answer: "true"
+   },
+   {
+    question: "Porter's Five Forces analysis includes competitive rivalry, the threat of new entrants, bargaining power of suppliers, bargaining power of buyers, and the threat of substitutes.",
+    answer: "true"
    }
 ];
 
@@ -32,13 +92,28 @@ const scoreBox = document.querySelector(".endBox");
 const quizBox = document.querySelector(".main-quiz-holder");
 const mScore = document.getElementById("userScore");
 const outOfScore = document.getElementById("outOf");
-
-nextQuest.style.display = "none";
+const catImageEnd = document.getElementById("goodluck-cat");
+const comments = document.getElementById("comments");
+const startQuizHolder = document.querySelector(".startQuiz");
+const startQ = document.querySelector(".startQ");
+const catHome = document.getElementById("cat-home");
 
 function playE(){
   effectMove.play();
   effectMove.audio = 0.7;
 }
+
+startQ.addEventListener('click', () =>{
+  playE()
+  setTimeout(()=>{
+    quizBox.style.display = "block";
+    catHome.style.display = "block";
+    startQuizHolder.style.display = "none";
+  },500);
+});
+
+
+nextQuest.style.display = "none";
 
 function quizStart(){
   let {question} = questions[questionIndex];
@@ -67,7 +142,17 @@ nextQuest.addEventListener('click', ()=>{
   (userSelected == answer)? userScore++ : null;
     
   if(questionIndex >= questions.length - 1){
+
+    if(userScore >= 15){
+      comments.innerHTML = "Good job baby <del>shark</del>";
+      catImageEnd.src = "img/peach-goma-peach-and-goma.gif";
+    }else{
+      comments.innerHTML = "Nice try baby <del>shark</del>";
+      catImageEnd.src = "img/banana-cat-banana-cat-crying.gif";
+    }
     setTimeout(()=>{
+      document.getElementsByTagName("article")[0].style.marginTop = "4rem";
+      catHome.style.display = "none";
       quizBox.style.display = "none";
       scoreBox.style.display = "flex";
       mScore.textContent = userScore;
